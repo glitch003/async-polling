@@ -4,7 +4,7 @@ if (typeof(require) !== 'undefined') {
 
 var i = 0;
 
-var polling = AsyncPolling(function (end) {
+var polling = new AsyncPolling(function (end) {
     ++i;
     if (i === 3) {
         return end(new Error("i is " + i));

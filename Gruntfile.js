@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 sourceMap: true,
             },
             dist: {
-                src: ['lib/util.js', 'lib/event-emitter.js', 'src/async-polling.js'],
+                src: ['src/async-polling.js'],
                 dest: 'dist/async-polling.js',
             },
         },
