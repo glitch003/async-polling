@@ -22,7 +22,6 @@
     "test",
     "tests",
     "Makefile",
-    "lib",
     "src",
     "package.json"
   ]

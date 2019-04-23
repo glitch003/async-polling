@@ -41,9 +41,9 @@ var AsyncPolling = require('async-polling');
 Here is the basic usage:
 
 ```js
-AsyncPolling(function (end) {
+new AsyncPolling(function (end) {
     // Do whatever you want.
-        
+
     // Then notify the polling when your job is done:
     end();
     // This will schedule the next call.
@@ -52,16 +52,16 @@ AsyncPolling(function (end) {
 
 You can also send a result to the `end` callback with the usual signature `(error, result)`. Pass `null` as first argument when everythin is fine:
 ```js
-var polling = AsyncPolling(function (end) {
+var polling = new AsyncPolling(function (end) {
     someAsynchroneProcess(function (error, response) {
         if (error) {
             // Notify the error:
             end(error)
             return;
         }
-        
+
         // Do something with the result.
-        
+
         // Then send it to the listeners:
         end(null, result);
     });
@@ -84,7 +84,7 @@ See also [the demo script](https://github.com/cGuille/async-polling/blob/master/
 ### Create a polling
 
 ```js
-var polling = AsyncPolling(pollingFunc, delay);
+var polling = new AsyncPolling(pollingFunc, delay);
 ```
 
 - `pollingFunc(end)`: [`function`] The function to run periodically; takes a callback as parameter to notify the end of the process and possibly send a result. It will be bound to the polling object.
@@ -104,9 +104,9 @@ polling.stop();
 
 Since the polling function is bound to `polling`, one can call `this.stop()` from within the polling function:
 ```js
-AsyncPolling(function (end) {
+new AsyncPolling(function (end) {
     // Do some stuff
-    
+
     // Here I want to stop the polling:
     this.stop();
     end();
